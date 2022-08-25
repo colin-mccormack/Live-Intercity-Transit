@@ -1,8 +1,13 @@
 package com.example.springbootweb.data.models;
 
+import javax.persistence.Entity;
+import javax.persistence.Id;
+
+@Entity
 public class gtfs {
 
     private Integer stop_id;
+    @Id
     private String stop_code;
     private String stop_name;
     private Integer location_type;
