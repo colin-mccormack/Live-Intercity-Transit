@@ -2,3 +2,6 @@ https://www.section.io/engineering-education/how-to-create-a-rest-api-using-spri
 https://www.youtube.com/watch?v=u8a25mQcMOI&t=1738s
 https://stackabuse.com/data-transfer-object-pattern-in-java-implementation-and-mapping/
 https://spring.io/guides/gs/accessing-data-mysql/
+
+https://mapshaper.org/
+https://ftp.maps.canada.ca/pub/nrcan_rncan/vector/geobase_nrwn_rfn/

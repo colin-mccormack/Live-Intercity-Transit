@@ -9,6 +9,14 @@ function makeStationIcons(json) {
     }
 }
 
+/*
+Sample JSON station data to model
+
+stop_id,stop_code,stop_name,location_type,stop_lon,stop_lat,stop_timezone,parent_station,wheelchair_boarding
+199,BENN,Benny,0,-81.630163,46.781815,America/Toronto,,
+
+ */
+
 var map = L.map('map').setView([43.6437947,-79.3835378], 13);
 
 L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {

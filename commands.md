@@ -22,3 +22,10 @@ stop_timezone varchar(25),
 parent_station varchar(40),
 wheelchair_boarding int
 )
+
+# Add ONR stations
+INSERT INTO gtfs (stop_code, location_type, stop_id, stop_lat, stop_lon, stop_name, stop_timezone, wheelchair_boarding)
+VALUES ('COCH', 720, 072, 49.06055,  -81.02341, 'Cochrane', 'America/Toronto', 1);
+
+INSERT INTO gtfs (stop_code, location_type, stop_id, stop_lat, stop_lon, stop_name, stop_timezone)
+VALUES ('FRAS', 0, 189, 49.851183,   -81.6066, 'Fraserdale', 'America/Toronto');
