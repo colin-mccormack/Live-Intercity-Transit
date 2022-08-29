@@ -43,25 +43,13 @@ let getURL = window.location.href + "all"
 xhttp.open("GET", getURL, true);
 xhttp.send();
 
-// let geoJSONPAths = [
-//     "../GeoJSON/nrwn_rfn_on_kml_eng1.json", "../GeoJSON/nrwn_rfn_on_kml_eng2.json",
-//     "../GeoJSON/nrwn_rfn_ab_kml_eng1.json", "../GeoJSON/nrwn_rfn_ab_kml_eng2.json",
-//     "../GeoJSON/nrwn_rfn_mb_kml_eng1.json", "../GeoJSON/nrwn_rfn_mb_kml_eng2.json",
-//     "../GeoJSON/nrwn_rfn_nb_kml_eng1.json", "../GeoJSON/nrwn_rfn_nb_kml_eng2.json",
-//     "../GeoJSON/nrwn_rfn_nl_kml_eng1.json", "../GeoJSON/nrwn_rfn_nl_kml_eng2.json",
-//     "../GeoJSON/nrwn_rfn_ns_kml_eng1.json", "../GeoJSON/nrwn_rfn_ns_kml_eng2.json",
-//     "../GeoJSON/nrwn_rfn_nt_kml_eng1.json", "../GeoJSON/nrwn_rfn_nt_kml_eng2.json",
-//     "../GeoJSON/nrwn_rfn_qc_kml_eng1.json", "../GeoJSON/nrwn_rfn_qc_kml_eng2.json",
-//     "../GeoJSON/nrwn_rfn_sk_kml_eng1.json", "../GeoJSON/nrwn_rfn_sk_kml_eng2.json",
-//     "../GeoJSON/nrwn_rfn_yt_kml_eng1.json", "../GeoJSON/nrwn_rfn_yt_kml_eng2.json"
-// ]
-// window.onload = function() {
-//     for (let i = 0; i < geoJSONPAths.length; i++) {
-//         var geojson = new L.GeoJSON.AJAX(geoJSONPAths[i]);
-//         geojson.addTo(map);
-//     }
-//     console.log("GEOJSON added")
-// }
+
+window.onload = function() {
+    let getRoutesURL = window.location.href + "routes"
+    var geojson = new L.GeoJSON.AJAX(getRoutesURL);
+    geojson.addTo(map);
+    console.log("GEOJSON added")
+}
 
 
 /*

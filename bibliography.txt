@@ -5,3 +5,9 @@ https://spring.io/guides/gs/accessing-data-mysql/
 
 https://mapshaper.org/
 https://ftp.maps.canada.ca/pub/nrcan_rncan/vector/geobase_nrwn_rfn/
+
+https://stackoverflow.com/questions/41956864/set-class-path-resource
+https://www.leveluplunch.com/java/tutorials/032-return-file-from-spring-rest-webservice/
+https://www.baeldung.com/spring-classpath-file-access
+https://www.google.com/maps/d/edit?mid=1Rc7d6vKyiTwUdNNGBKxVK6Vvr2QBo6M&usp=sharing
+https://cdnjs.com/libraries/leaflet-ajax
