@@ -11,3 +11,8 @@ https://www.leveluplunch.com/java/tutorials/032-return-file-from-spring-rest-web
 https://www.baeldung.com/spring-classpath-file-access
 https://www.google.com/maps/d/edit?mid=1Rc7d6vKyiTwUdNNGBKxVK6Vvr2QBo6M&usp=sharing
 https://cdnjs.com/libraries/leaflet-ajax
+
+https://stackoverflow.com/questions/17955777/redirect-to-an-external-url-from-controller-action-in-spring-mvc
+https://stackoverflow.com/questions/29247523/how-to-pass-json-value-from-controller-to-html-in-thymeleaf
+https://www.tutorialspoint.com/how-to-read-the-contents-of-a-webpage-into-a-string-in-java
+https://thewebdev.info/2022/04/25/how-to-call-a-function-periodically-in-javascript/#:~:text=To%20call%20a%20function%20periodically%20in%20JavaScript%2C%20we%20call%20the,that%20runs%20every%205%20seconds.

@@ -29,3 +29,6 @@ VALUES ('COCH', 720, 072, 49.06055,  -81.02341, 'Cochrane', 'America/Toronto', 1
 
 INSERT INTO gtfs (stop_code, location_type, stop_id, stop_lat, stop_lon, stop_name, stop_timezone)
 VALUES ('FRAS', 0, 189, 49.851183,   -81.6066, 'Fraserdale', 'America/Toronto');
+
+# When setting up server it is necessary to whitelist https://tsimobile.viarail.ca/data/allData.json
+https://stackoverflow.com/questions/10143093/origin-is-not-allowed-by-access-control-allow-origin
