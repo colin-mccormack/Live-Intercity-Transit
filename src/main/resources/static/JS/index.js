@@ -22,6 +22,22 @@ function makeStationIcons(json) {
     }
 }
 
+function getStationData (stop) {
+    var xhttp = new XMLHttpRequest();
+    xhttp.onreadystatechange = function() {
+        if (this.readyState == 4 && this.status == 200) {
+            //console.log (this.getAllResponseHeaders());
+            console.log (this.responseText);
+            return(this.responseText);
+        }
+    };
+    let getURL = window.location.href + "all/" + stop.toString();
+    // First Call
+    xhttp.open("GET", getURL, true);
+    xhttp.send();
+
+}
+
 function makeTrains(json) {
     let trains = JSON.parse(json);
     Object.keys(trains).forEach(key => {
@@ -43,6 +59,28 @@ function makeTrains(json) {
             console.log("Train added");
             setTimeout(function () {
                 marker.remove();
+            }, 10000);
+        } else if (trains[key].departed !== true) {
+            var stationData = getStationData(trains[key].times[0].code);
+            var markerDep = new L.Marker([stationData.stop_lat, stationData.stop_lon], {icon: trainIcon});
+            var stringDep = trains[key].from + " - " + trains[key].to + " (Status : Not Departed)";
+            markerDep.addTo(map).bindPopup(stringDep);
+            console.log("Train added (Not Departed)");
+            setTimeout(function () {
+                markerDep.remove();
+            }, 10000);
+        } else {
+            // This code is not working since the station data is not being accessed using an accurate key
+            // TO FIX 2022-08-30
+            var arrayLength = trains[key].times.length - 1;
+            var stationData2 = getStationData(trains[key].times[arrayLength].code);
+            console.log (stationData2)
+            var markerArr = new L.Marker([stationData2.stop_lat, stationData2.stop_lon], {icon: trainIcon});
+            var stringArr = trains[key].from + " - " + trains[key].to + " (Status : Arrived)";
+            markerArr.addTo(map).bindPopup(stringArr);
+            console.log("Train added (Arrived)");
+            setTimeout(function () {
+                markerArr.remove();
             }, 10000);
         }
     });
