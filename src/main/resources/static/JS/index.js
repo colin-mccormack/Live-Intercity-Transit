@@ -10,25 +10,25 @@ function makeStationIcons(json) {
             if (stations[i].stop_code == majorStations[j]) {
                 var majorMarker = new L.Marker([stations[i].stop_lat, stations[i].stop_lon], {icon: stationIcon});
                 majorMarker.addTo(map).bindPopup(stations[i].stop_name);
-                console.log ("Major marker added");
+                // console.log ("Major marker added");
                 stationFound = true;
             }
         }
         if (!stationFound) {
             var marker = new L.Marker([stations[i].stop_lat, stations[i].stop_lon], {icon: locationIcon});
             marker.addTo(map).bindPopup(stations[i].stop_name);
-            console.log("Marker added");
+            // console.log("Marker added");
         }
     }
 }
 
-function getStationData (stop) {
+function getStationData (stop, string) {
     var xhttp = new XMLHttpRequest();
     xhttp.onreadystatechange = function() {
         if (this.readyState == 4 && this.status == 200) {
             //console.log (this.getAllResponseHeaders());
-            console.log (this.responseText);
-            return(this.responseText);
+            // console.log (this.responseText);
+            makeTrainsAtStation(this.responseText, string);
         }
     };
     let getURL = window.location.href + "all/" + stop.toString();
@@ -38,11 +38,20 @@ function getStationData (stop) {
 
 }
 
+function makeTrainsAtStation(json, string) {
+    let trains = JSON.parse(json);
+    var markerStation = new L.Marker([trains.stop_lat - 0.001 * Math.random(), trains.stop_lon], {icon: trainIcon});
+    markerStation.addTo(map).bindPopup(string);
+    setTimeout(function () {
+        markerStation.remove();
+    }, 10000);
+}
+
 function makeTrains(json) {
     let trains = JSON.parse(json);
     Object.keys(trains).forEach(key => {
         let value = trains[key];
-        console.log(key, value);
+        // console.log(key, value);
 
         // If arrived == true then put train at destination or vise versa at start
 
@@ -51,37 +60,30 @@ function makeTrains(json) {
         //     // Put train at station
         // }
 
-        console.log(trains[key].lat + " - " + trains[key].lng);
+        // console.log(trains[key].lat + " - " + trains[key].lng);
         if (typeof(trains[key].lat) != "undefined") {
+
             var marker = new L.Marker([trains[key].lat, trains[key].lng], {icon: trainIcon});
             var string = trains[key].from + " - " + trains[key].to + " (Speed : " + trains[key].speed + ")";
             marker.addTo(map).bindPopup(string);
-            console.log("Train added");
+            // console.log("Train added");
             setTimeout(function () {
                 marker.remove();
             }, 10000);
+
         } else if (trains[key].departed !== true) {
-            var stationData = getStationData(trains[key].times[0].code);
-            var markerDep = new L.Marker([stationData.stop_lat, stationData.stop_lon], {icon: trainIcon});
-            var stringDep = trains[key].from + " - " + trains[key].to + " (Status : Not Departed)";
-            markerDep.addTo(map).bindPopup(stringDep);
-            console.log("Train added (Not Departed)");
-            setTimeout(function () {
-                markerDep.remove();
-            }, 10000);
+
+            var stringDep = trains[key].from + " - " + trains[key].to + " (Status : Arrived)";
+            var stationData = getStationData(trains[key].times[0].code, stringDep);
+
         } else {
+
             // This code is not working since the station data is not being accessed using an accurate key
             // TO FIX 2022-08-30
             var arrayLength = trains[key].times.length - 1;
-            var stationData2 = getStationData(trains[key].times[arrayLength].code);
-            console.log (stationData2)
-            var markerArr = new L.Marker([stationData2.stop_lat, stationData2.stop_lon], {icon: trainIcon});
             var stringArr = trains[key].from + " - " + trains[key].to + " (Status : Arrived)";
-            markerArr.addTo(map).bindPopup(stringArr);
-            console.log("Train added (Arrived)");
-            setTimeout(function () {
-                markerArr.remove();
-            }, 10000);
+            var stationData2 = getStationData(trains[key].times[arrayLength].code, stringArr);
+
         }
     });
     // for (const key in trains){
