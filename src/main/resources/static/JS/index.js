@@ -38,9 +38,9 @@ function getStationData (stop, string) {
 
 }
 
-function makeTrainsAtStation(json, string) {
+function makeTrainsAtStation(json, string, key) {
     let trains = JSON.parse(json);
-    var markerStation = new L.Marker([trains.stop_lat - 0.001 * Math.random(), trains.stop_lon], {icon: trainIcon});
+    var markerStation = new L.Marker([trains.stop_lat - 0.00001 * key, trains.stop_lon], {icon: trainIcon});
     markerStation.addTo(map).bindPopup(string);
     setTimeout(function () {
         markerStation.remove();
@@ -74,7 +74,7 @@ function makeTrains(json) {
         } else if (trains[key].departed !== true) {
 
             var stringDep = trains[key].from + " - " + trains[key].to + " (Status : Arrived)";
-            var stationData = getStationData(trains[key].times[0].code, stringDep);
+            var stationData = getStationData(trains[key].times[0].code, stringDep, key);
 
         } else {
 
@@ -82,7 +82,7 @@ function makeTrains(json) {
             // TO FIX 2022-08-30
             var arrayLength = trains[key].times.length - 1;
             var stringArr = trains[key].from + " - " + trains[key].to + " (Status : Arrived)";
-            var stationData2 = getStationData(trains[key].times[arrayLength].code, stringArr);
+            var stationData2 = getStationData(trains[key].times[arrayLength].code, stringArr, key);
 
         }
     });
