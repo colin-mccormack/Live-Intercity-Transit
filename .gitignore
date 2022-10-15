@@ -34,3 +34,6 @@ build/
 
 # GeoJSON
 src/main/resources/static/GeoJSON
+
+# Connections
+src/main/resources/application.properties
