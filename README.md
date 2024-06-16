@@ -6,7 +6,7 @@ Currently, the project supports VIA rail stations and trains as well as Ontario 
 ONR does not supply live realtime data so support is coming, but in a preliminary stage.
 
 ## Structure
-Java Backend with static data stored on a MySQl server. 
+Java Backend with static data stored on a MySQL server. 
 Live data is served by timed AJAX calls.
 
 ## Demo
